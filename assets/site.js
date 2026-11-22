@@ -3,7 +3,8 @@
   const translations = [...document.querySelectorAll('[data-language]')];
   function showLanguage() {
     const hash = location.hash.slice(1);
-    const language = hash === 'en' || hash.endsWith('-en') ? 'en' : 'fr';
+    const language = hash === 'en' || hash.endsWith('-en') ? 'en'
+      : hash === 'fr' || hash.endsWith('-fr') ? 'fr' : document.documentElement.lang;
     translations.forEach(section => { section.hidden = section.dataset.language !== language; });
     document.documentElement.lang = language;
     document.querySelectorAll('[data-language-link]').forEach(link => {
